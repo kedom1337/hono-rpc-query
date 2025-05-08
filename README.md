@@ -30,11 +30,7 @@ const posts = [
 const app = new Hono();
 const routes = app
   .get("/posts", (c) => {
-    return c.json([
-      { id: 1, title: "Post 1" },
-      { id: 2, title: "Post 2" },
-    ]);
-  });
+    return c.json(posts);
   .get('/posts/:id', sValidator('param', z.object({ id: z.number() })), (c) => {
     const { id } = c.req.valid('param')
     const post = posts.find((p) => p.id === id);
