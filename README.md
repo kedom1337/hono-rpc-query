@@ -15,41 +15,41 @@ pnpm add hono-rpc-query
 ## Usage
 
 ```typescript
-import { hc } from "hono/client";
-import { Hono } from "hono";
-import { sValidator } from '@hono/standard-validator';
-import { hcQuery } from 'hono-rpc-query';
-import * as z from 'zod';
+import { hc } from 'hono/client'
+import { Hono } from 'hono'
+import { sValidator } from '@hono/standard-validator'
+import { hcQuery } from 'hono-rpc-query'
+import * as z from 'zod'
 
 const posts = [
   { id: 1, title: 'Post 1' },
   { id: 2, title: 'Post 2' },
-];
+]
 
 // 1. Create your hono application
-const app = new Hono();
+const app = new Hono()
 const routes = app
-  .get("/posts", (c) => {
-    return c.json(posts);
+  .get('/posts', (c) => {
+    return c.json(posts)
   })
   .get('/posts/:id', sValidator('param', z.object({ id: z.number() })), (c) => {
     const { id } = c.req.valid('param')
-    const post = posts.find((p) => p.id === id);
-    return post ? c.json(post) : c.notFound();
+    const post = posts.find((p) => p.id === id)
+    return post ? c.json(post) : c.notFound()
   })
 
 // 2. Create a hono RPC client and wrap it with `hcQuery`
-type AppRoutes = typeof routes;
-const api = hcQuery(hc<AppRoutes>("http://localhost"));
+type AppRoutes = typeof routes
+const api = hcQuery(hc<AppRoutes>('http://localhost'))
 
 // 3. Profit!
 const posts = api.posts.$get.queryOptions({})
-const post = api.posts[":id"].$get.queryOptions({
+const post = api.posts[':id'].$get.queryOptions({
   input: {
     param: {
-      id: 1
-    }
-  }
+      id: 1,
+    },
+  },
 })
 ```
 
