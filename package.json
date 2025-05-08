@@ -10,6 +10,11 @@
   ],
   "author": "kedom1337",
   "license": "MIT",
+  "homepage": "https://github.com/kedom1337/hono-rpc-query",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kedom1337/hono-rpc-query.git"
+  },
   "files": [
     "dist"
   ],
