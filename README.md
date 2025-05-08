@@ -1,4 +1,4 @@
-# hono-rpc-query
+# 🔥 hono-rpc-query
 
 Tries to solve the problem of repeated boilerplate from integrating Hono's RPC client
 with Tanstack React Query. It does so by automatically generating both
