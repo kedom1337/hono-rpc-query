@@ -56,6 +56,7 @@ const post = api.posts[":id"].$get.queryOptions({
 ```
 
 ## Known limitations
+
 - No support for `infiniteQueryOptions`
 
 ## Contributing
