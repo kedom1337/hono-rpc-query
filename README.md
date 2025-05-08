@@ -17,6 +17,7 @@ pnpm add hono-rpc-query
 ```typescript
 import { hc } from "hono/client";
 import { Hono } from "hono";
+import { sValidator } from '@hono/standard-validator';
 import { hcQuery } from 'hono-rpc-query';
 import * as z from 'zod';
 
