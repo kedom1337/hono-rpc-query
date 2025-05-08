@@ -25,19 +25,19 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm install --frozen-lockfile
 
       - name: Format check
-        run: pnpm format:check
+        run: npm format:check
 
       - name: Lint
-        run: pnpm lint
+        run: npm lint
 
       - name: Type‑check
-        run: pnpm type-check
+        run: npm type-check
 
       - name: Test
-        run: pnpm test -- --ci --reporters=github-actions --coverage
+        run: npm test -- --ci --reporters=github-actions --coverage
 
       - name: Upload coverage
         if: always()
