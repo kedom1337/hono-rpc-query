@@ -29,7 +29,8 @@
     "type-check": "tsc -b",
     "test": "vitest",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "packageManager": "pnpm@10.6.3",
   "peerDependencies": {
