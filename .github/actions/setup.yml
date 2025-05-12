@@ -1,0 +1,23 @@
+name: Node.js + PNPM Setup
+description: Checkout code, install pnpm, setup Node.js and install dependencies
+inputs:
+  node-version:
+    description: The Node.js version to install (e.g. 18.x)
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        run_install: false
+    - name: Setup Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: pnpm
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
