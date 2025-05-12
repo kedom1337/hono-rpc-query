@@ -1,8 +1,8 @@
-import {
-  type QueryFunctionContext,
-  type QueryKey,
-  type UseMutationOptions,
-  type UseQueryOptions,
+import type {
+  QueryFunctionContext,
+  QueryKey,
+  UseMutationOptions,
+  UseQueryOptions,
 } from '@tanstack/react-query'
 import type {
   ClientRequestOptions,
@@ -80,7 +80,7 @@ function createHcQueryEndpoint<TEndpoint extends ClientRequestEndpoint>(
         }),
         mutationFn: async (input) => {
           const res = await endpoint(input)
-          return res.json() as InferResponseType<TEndpoint>
+          return (await res.json()) as InferResponseType<TEndpoint>
         },
       }
     },
