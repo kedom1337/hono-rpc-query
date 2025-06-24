@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/kedom1337/hono-rpc-query/compare/v1.1.0...v1.2.0) (2025-06-24)
+
+
+### Features
+
+* switch from tsup to tsdown ([ff75a3d](https://github.com/kedom1337/hono-rpc-query/commit/ff75a3d4cbdb42f01f51a34637bc25c961afeab1))
+
 # [1.1.0](https://github.com/kedom1337/hono-rpc-query/compare/v1.0.0...v1.1.0) (2025-05-14)
 
 
