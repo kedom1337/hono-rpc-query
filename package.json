@@ -18,14 +18,15 @@
   "files": [
     "dist"
   ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "type-check": "tsc -b",
     "test": "vitest --coverage",
     "lint": "eslint .",
@@ -48,7 +49,7 @@
     "prettier": "^3.6.0",
     "prettier-plugin-organize-imports": "^4.1.0",
     "semantic-release": "^24.2.5",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.12.8",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.0",
     "vitest": "^3.2.4"
