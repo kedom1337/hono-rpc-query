@@ -23,6 +23,8 @@ jobs:
           node-version: 20
       - name: Verify provenance and registry signatures for dependencies
         run: pnpm audit signatures
+      - name: Build
+        run: pnpm build
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
