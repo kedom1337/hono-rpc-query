@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
-    name: Validate
+  check:
+    name: Check
     runs-on: ubuntu-latest
     permissions:
       contents: read
