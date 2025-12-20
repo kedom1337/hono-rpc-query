@@ -1,4 +1,4 @@
-name: release
+name: Release
 on:
   workflow_dispatch:
 
@@ -15,18 +15,22 @@ jobs:
       pull-requests: write
       id-token: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+
       - name: Setup
         uses: ./.github/actions/setup
-        with:
-          node-version: 20
+
       - name: Verify provenance and registry signatures for dependencies
         run: pnpm audit signatures
+
       - name: Build
         run: pnpm build
+
       - name: Release
+        run: pnpm exec semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm exec semantic-release
