@@ -77,31 +77,29 @@ function App() {
       {postsQuery.error && <p>Error: {postsQuery.error.message}</p>}
       {postsQuery.data && Array.isArray(postsQuery.data) && (
         <ul style={{ listStyle: 'none', padding: 0 }}>
-          {postsQuery.data.map(
-            (post: { id: number; title: string; content: string }) => (
-              <li
-                key={post.id}
-                style={{
-                  border: '1px solid #ccc',
-                  padding: '15px',
-                  marginBottom: '10px',
-                  borderRadius: '4px',
-                }}
+          {postsQuery.data.map((post) => (
+            <li
+              key={post.id}
+              style={{
+                border: '1px solid #ccc',
+                padding: '15px',
+                marginBottom: '10px',
+                borderRadius: '4px',
+              }}
+            >
+              <h3 style={{ margin: '0 0 10px 0' }}>{post.title}</h3>
+              <p style={{ margin: '0 0 10px 0' }}>{post.content}</p>
+              <button
+                onClick={() =>
+                  deleteMutation.mutate({ param: { id: String(post.id) } })
+                }
+                disabled={deleteMutation.isPending}
+                style={{ padding: '4px 8px', color: 'red' }}
               >
-                <h3 style={{ margin: '0 0 10px 0' }}>{post.title}</h3>
-                <p style={{ margin: '0 0 10px 0' }}>{post.content}</p>
-                <button
-                  onClick={() =>
-                    deleteMutation.mutate({ param: { id: String(post.id) } })
-                  }
-                  disabled={deleteMutation.isPending}
-                  style={{ padding: '4px 8px', color: 'red' }}
-                >
-                  Delete
-                </button>
-              </li>
-            )
-          )}
+                Delete
+              </button>
+            </li>
+          ))}
         </ul>
       )}
     </div>
