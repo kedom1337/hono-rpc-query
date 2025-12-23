@@ -13,9 +13,9 @@ function App() {
   // Create post mutation using mutationOptions from hono-rpc-query
   const createMutation = useMutation({
     ...api.posts.$post.mutationOptions({}),
-    onSuccess: () => {
+    onSuccess: async () => {
       // Invalidate and refetch posts after creating
-      queryClient.invalidateQueries({
+      await queryClient.invalidateQueries({
         queryKey: api.posts.$get.queryOptions({}).queryKey,
       })
       setTitle('')
@@ -26,8 +26,8 @@ function App() {
   // Delete post mutation
   const deleteMutation = useMutation({
     ...api.posts[':id'].$delete.mutationOptions({}),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         queryKey: api.posts.$get.queryOptions({}).queryKey,
       })
     },

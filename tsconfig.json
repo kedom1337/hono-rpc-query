@@ -26,5 +26,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist", "example"]
 }
