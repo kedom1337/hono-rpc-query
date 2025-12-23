@@ -15,7 +15,9 @@ function App() {
     ...api.posts.$post.mutationOptions({}),
     onSuccess: () => {
       // Invalidate and refetch posts after creating
-      queryClient.invalidateQueries({ queryKey: ['posts'] })
+      queryClient.invalidateQueries({
+        queryKey: api.posts.$get.queryOptions({}).queryKey,
+      })
       setTitle('')
       setContent('')
     },
@@ -25,7 +27,9 @@ function App() {
   const deleteMutation = useMutation({
     ...api.posts[':id'].$delete.mutationOptions({}),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts'] })
+      queryClient.invalidateQueries({
+        queryKey: api.posts.$get.queryOptions({}).queryKey,
+      })
     },
   })
 
