@@ -11,27 +11,30 @@ function App() {
   const postsQuery = useQuery(api.posts.$get.queryOptions({}))
 
   // Create post mutation using mutationOptions from hono-rpc-query
-  const createMutation = useMutation({
-    ...api.posts.$post.mutationOptions({}),
-    onSuccess: async () => {
-      // Invalidate and refetch posts after creating
-      await queryClient.invalidateQueries({
-        queryKey: api.posts.$get.queryOptions({}).queryKey,
-      })
-      setTitle('')
-      setContent('')
-    },
-  })
+  const createMutation = useMutation(
+    api.posts.$post.mutationOptions({
+      onSuccess: async () => {
+        // Invalidate and refetch posts after creating
+        // using the queryKey from queryOptions
+        await queryClient.invalidateQueries({
+          queryKey: api.posts.$get.queryOptions({}).queryKey,
+        })
+        setTitle('')
+        setContent('')
+      },
+    })
+  )
 
   // Delete post mutation
-  const deleteMutation = useMutation({
-    ...api.posts[':id'].$delete.mutationOptions({}),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: api.posts.$get.queryOptions({}).queryKey,
-      })
-    },
-  })
+  const deleteMutation = useMutation(
+    api.posts[':id'].$delete.mutationOptions({
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
+          queryKey: api.posts.$get.queryOptions({}).queryKey,
+        })
+      },
+    })
+  )
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

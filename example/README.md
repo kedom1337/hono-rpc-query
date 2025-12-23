@@ -80,22 +80,27 @@ export const api = hcQuery(client)
 The `api` object provides `queryOptions` and `mutationOptions` for all endpoints:
 
 ```typescript
-// Queries
+// Queries - pass options directly to queryOptions
 const postsQuery = useQuery(api.posts.$get.queryOptions({}))
 
-// Mutations
-const createMutation = useMutation({
-  ...api.posts.$post.mutationOptions({}),
-  onSuccess: () => {
-    queryClient.invalidateQueries({
-      queryKey: api.posts.$get.queryOptions({}).queryKey,
-    })
-  },
-})
+// Mutations - pass options directly to mutationOptions
+const createMutation = useMutation(
+  api.posts.$post.mutationOptions({
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: api.posts.$get.queryOptions({}).queryKey,
+      })
+    },
+  })
+)
 
 // With path parameters
-const deleteMutation = useMutation({
-  ...api.posts[':id'].$delete.mutationOptions({}),
-})
+const deleteMutation = useMutation(
+  api.posts[':id'].$delete.mutationOptions({
+    onSuccess: () => {
+      // Handle success
+    },
+  })
+)
 deleteMutation.mutate({ param: { id: '1' } })
 ```
