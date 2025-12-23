@@ -1,0 +1,19 @@
+{
+  "name": "example-server",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.3",
+    "@hono/zod-validator": "^0.5.0",
+    "hono": "^4.8.2",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

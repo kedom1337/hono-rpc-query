@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "tsBuildInfoFile": "${configDir}/node_modules/.tmp/tsconfig.tsbuildinfo",
+
     "module": "esnext",
     "target": "esnext",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext", "DOM"],
 
     "strict": true,
     "jsx": "react-jsx",
@@ -13,7 +15,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "allowJs": true,
-    "noEmit": true,
+    "outDir": "dist",
 
     "noUncheckedIndexedAccess": true,
     "noImplicitReturns": true,
@@ -26,5 +28,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["**/*"],
-  "exclude": ["dist", "example"]
+  "exclude": ["dist"]
 }
