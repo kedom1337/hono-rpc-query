@@ -87,7 +87,9 @@ const postsQuery = useQuery(api.posts.$get.queryOptions({}))
 const createMutation = useMutation({
   ...api.posts.$post.mutationOptions({}),
   onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: api.posts.$get.queryOptions({}).queryKey })
+    queryClient.invalidateQueries({
+      queryKey: api.posts.$get.queryOptions({}).queryKey,
+    })
   },
 })
 
