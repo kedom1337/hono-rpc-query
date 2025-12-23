@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/kedom1337/hono-rpc-query/compare/v1.2.0...v1.3.0) (2025-12-23)
+
+
+### Features
+
+* update dependencies for release ([ef21b2c](https://github.com/kedom1337/hono-rpc-query/commit/ef21b2c0e74dfc23384576026ffd9f88f5668668))
+
 # [1.2.0](https://github.com/kedom1337/hono-rpc-query/compare/v1.1.0...v1.2.0) (2025-06-24)
 
 
