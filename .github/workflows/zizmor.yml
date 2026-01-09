@@ -3,7 +3,11 @@ on:
   push:
     branches:
       - master
+    paths:
+      - '.github/**'
   pull_request:
+    paths:
+      - '.github/**'
 
 jobs:
   zizmor:

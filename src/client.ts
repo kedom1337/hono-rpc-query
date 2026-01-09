@@ -13,7 +13,6 @@ import type {
 import { buildKey } from './key'
 
 type ClientRequestEndpoint = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   args: any,
   options?: ClientRequestOptions
 ) => Promise<ClientResponse<unknown>>
@@ -25,15 +24,12 @@ export interface QueryEndpoint<TEndpoint extends ClientRequestEndpoint> {
       UseQueryOptions<InferResponseType<TEndpoint>>,
       'queryKey' | 'queryFn'
     > &
-      // eslint-disable-next-line @typescript-eslint/no-empty-object-type
       ({} extends InferRequestType<TEndpoint>
         ? { input?: undefined }
         : { input: InferRequestType<TEndpoint> })
   ) => {
     queryKey: QueryKey
-    queryFn: (
-      opts: QueryFunctionContext
-    ) => Promise<InferResponseType<TEndpoint>>
+    queryFn: (opts: QueryFunctionContext) => Promise<InferResponseType<TEndpoint>>
   }
   mutationOptions: (
     args: Omit<
