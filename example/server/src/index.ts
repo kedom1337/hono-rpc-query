@@ -53,6 +53,59 @@ const routes = app
       return c.json(newPost, 201)
     }
   )
+  .put(
+    '/posts/:id',
+    zValidator(
+      'param',
+      z.object({
+        id: z.coerce.number(),
+      })
+    ),
+    zValidator(
+      'json',
+      z.object({
+        title: z.string().min(1),
+        content: z.string().min(1),
+      })
+    ),
+    (c) => {
+      const { id } = c.req.valid('param')
+      const { title, content } = c.req.valid('json')
+      const index = posts.findIndex((p) => p.id === id)
+      if (index === -1) {
+        return c.notFound()
+      }
+      posts[index] = { id, title, content }
+      return c.json(posts[index])
+    }
+  )
+  .patch(
+    '/posts/:id',
+    zValidator(
+      'param',
+      z.object({
+        id: z.coerce.number(),
+      })
+    ),
+    zValidator(
+      'json',
+      z.object({
+        title: z.string().min(1).optional(),
+        content: z.string().min(1).optional(),
+      })
+    ),
+    (c) => {
+      const { id } = c.req.valid('param')
+      const updates = c.req.valid('json')
+      const post = posts.find((p) => p.id === id)
+      if (!post) {
+        return c.notFound()
+      }
+      if (updates.title) post.title = updates.title
+      if (updates.content) post.content = updates.content
+      return c.json(post)
+    }
+  )
   .delete(
     '/posts/:id',
     zValidator(

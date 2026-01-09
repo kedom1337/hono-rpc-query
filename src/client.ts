@@ -105,7 +105,7 @@ export function hcQuery<T extends object>(obj: T) {
         }
 
         const nextPath = [...path, prop]
-        if (['$get', '$post', '$put', '$delete'].includes(prop)) {
+        if (['$get', '$post', '$put', '$patch', '$delete'].includes(prop)) {
           return createHcQueryEndpoint(value as ClientRequestEndpoint, nextPath)
         }
 
