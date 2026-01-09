@@ -247,7 +247,6 @@ Check out the [example](./example) directory for a full working implementation
 ## Known Limitations
 
 - No support for `infiniteQueryOptions` (yet)
-- Only supports `$get`, `$post`, `$put`, `$delete` methods
 
 ## Contributing
 
