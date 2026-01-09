@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/kedom1337/hono-rpc-query/compare/v1.4.0...v1.5.0) (2026-01-09)
+
+
+### Features
+
+* add support for PATCH method ([#11](https://github.com/kedom1337/hono-rpc-query/issues/11)) ([296d83a](https://github.com/kedom1337/hono-rpc-query/commit/296d83a9a0a212805d382fab7299b6047d67e5d7))
+
 # [1.4.0](https://github.com/kedom1337/hono-rpc-query/compare/v1.3.0...v1.4.0) (2025-12-23)
 
 
