@@ -66,7 +66,11 @@ function App() {
             style={{ width: '100%', padding: '8px', minHeight: '80px' }}
           />
         </div>
-        <button type="submit" disabled={createMutation.isPending} style={{ padding: '8px 16px' }}>
+        <button
+          type="submit"
+          disabled={createMutation.isPending}
+          style={{ padding: '8px 16px' }}
+        >
           {createMutation.isPending ? 'Creating...' : 'Create Post'}
         </button>
       </form>
@@ -89,7 +93,9 @@ function App() {
               <h3 style={{ margin: '0 0 10px 0' }}>{post.title}</h3>
               <p style={{ margin: '0 0 10px 0' }}>{post.content}</p>
               <button
-                onClick={() => deleteMutation.mutate({ param: { id: String(post.id) } })}
+                onClick={() =>
+                  deleteMutation.mutate({ param: { id: String(post.id) } })
+                }
                 disabled={deleteMutation.isPending}
                 style={{ padding: '4px 8px', color: 'red' }}
               >

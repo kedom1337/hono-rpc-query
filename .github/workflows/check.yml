@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   check:
-    name: Check
+    name: Lint, Type Check & Test
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,20 +21,23 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setup
-        uses: ./.github/actions/setup
+      - name: Setup PNPM
+        uses: ./.github/actions/setup-pnpm
 
-      - name: Format check
-        run: pnpm format:check
+      - name: Check build
+        run: pnpm run build
+
+      - name: Check formatting
+        run: pnpm run format:check
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm run lint --deny-warnings
 
-      - name: Type‑check
-        run: pnpm type-check
+      - name: Check types
+        run: pnpm run type-check
 
       - name: Test
-        run: pnpm test
+        run: pnpm run test
 
       - name: Upload coverage report
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0

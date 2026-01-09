@@ -29,7 +29,7 @@
     "build": "tsdown",
     "type-check": "tsc -b",
     "test": "vitest --coverage",
-    "lint": "oxlint",
+    "lint": "oxlint --type-aware --type-check",
     "format": "oxfmt .",
     "format:check": "oxfmt --check ."
   },
@@ -41,6 +41,7 @@
     "hono": "^4.8.2",
     "oxfmt": "^0.23.0",
     "oxlint": "^1.38.0",
+    "oxlint-tsgolint": "^0.11.0",
     "semantic-release": "^25.0.2",
     "tsdown": "^0.18.1",
     "typescript": "^5.8.3",
