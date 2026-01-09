@@ -1,16 +1,15 @@
 {
   "name": "hono-rpc-query",
-  "type": "module",
   "version": "1.5.0",
   "description": "Integration for Hono's RPC client with React Query",
   "keywords": [
     "hono",
-    "rpc",
-    "react query"
+    "react query",
+    "rpc"
   ],
-  "author": "kedom1337",
-  "license": "MIT",
   "homepage": "https://github.com/kedom1337/hono-rpc-query",
+  "license": "MIT",
+  "author": "kedom1337",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kedom1337/hono-rpc-query.git"
@@ -18,6 +17,7 @@
   "files": [
     "dist"
   ],
+  "type": "module",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -29,29 +29,26 @@
     "build": "tsdown",
     "type-check": "tsc -b",
     "test": "vitest --coverage",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
-  },
-  "packageManager": "pnpm@10.0.0",
-  "peerDependencies": {
-    "@tanstack/react-query": "^5.75.5",
-    "hono": "^4.7.8"
+    "lint": "oxlint",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
   },
   "devDependencies": {
-    "@eslint/js": "^9.29.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@tanstack/react-query": "^5.81.2",
     "@vitest/coverage-v8": "4.0.16",
-    "eslint": "^9.29.0",
     "hono": "^4.8.2",
-    "prettier": "^3.6.0",
-    "prettier-plugin-organize-imports": "^4.1.0",
+    "oxfmt": "^0.23.0",
+    "oxlint": "^1.38.0",
     "semantic-release": "^25.0.2",
     "tsdown": "^0.18.1",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.0",
     "vitest": "^4.0.15"
-  }
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.75.5",
+    "hono": "^4.7.8"
+  },
+  "packageManager": "pnpm@10.0.0"
 }

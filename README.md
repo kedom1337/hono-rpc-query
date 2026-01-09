@@ -30,24 +30,16 @@ const routes = app
       { id: 2, title: 'Learning Hono' },
     ])
   })
-  .get(
-    '/posts/:id',
-    zValidator('param', z.object({ id: z.coerce.number() })),
-    (c) => {
-      const { id } = c.req.valid('param')
-      // ... fetch post logic
-      return c.json({ id, title: 'Post title' })
-    }
-  )
-  .post(
-    '/posts',
-    zValidator('json', z.object({ title: z.string(), content: z.string() })),
-    (c) => {
-      const data = c.req.valid('json')
-      // ... create post logic
-      return c.json({ id: 3, ...data })
-    }
-  )
+  .get('/posts/:id', zValidator('param', z.object({ id: z.coerce.number() })), (c) => {
+    const { id } = c.req.valid('param')
+    // ... fetch post logic
+    return c.json({ id, title: 'Post title' })
+  })
+  .post('/posts', zValidator('json', z.object({ title: z.string(), content: z.string() })), (c) => {
+    const data = c.req.valid('json')
+    // ... create post logic
+    return c.json({ id: 3, ...data })
+  })
 
 export type AppRoutes = typeof routes
 ```

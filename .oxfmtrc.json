@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": ["CHANGELOG.md"],
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "semi": false,
+  "experimentalSortImports": {
+    "newlinesBetween": false
+  },
+  "experimentalSortPackageJson": true
+}
