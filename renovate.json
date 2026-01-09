@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices"],
+  "timezone": "Europe/Berlin",
+  "description": "Schedule on the first day of every month",
+  "schedule": ["* * 1 * *"],
+  "labels": ["dependencies"],
+  "nix": {
+    "enabled": true
+  }
+}
